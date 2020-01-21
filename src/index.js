@@ -5,21 +5,26 @@ function getData(url) {
     fetch(url)
         .then(res => res.json())
 
-        .then(respuestaJSON => {
-            populateDropdownMenu(respuestaJSON.rates);
-
-            document.querySelector("#date").innerText = respuestaJSON.date;
-            renderTable(respuestaJSON.rates);
+        .then(responseJSON => {
+            document.querySelector("#date").innerText = responseJSON.date;
+            renderTable(responseJSON.rates);
         })
 
-        .catch(error => console.error("FALLÓ", error));
+        .catch(error => console.error("Failed", error));
 }
 
 
-function populateDropdownMenu(object) {
-    for (keys in object) {
-        $dropdownMenu.appendChild(dropdownOptionCreator(keys));
-    }
+function populateDropdownMenu() {
+    //I populate the dropdown menu with the available currencies and with the same request I draw the initial table
+    fetch("https://api.exchangeratesapi.io/latest")
+        .then(res => res.json())
+
+        .then(responseJSON => {
+            for (key in responseJSON.rates) {
+                $dropdownMenu.appendChild(dropdownOptionCreator(key));
+            }
+            renderTable(responseJSON.rates);
+        })
 }
 
 
@@ -72,4 +77,4 @@ $dropdownMenu.onclick = function (e) {
     }
 }
 
-getData("https://api.exchangeratesapi.io/latest");
+populateDropdownMenu();
