@@ -1,0 +1,16 @@
+{
+  "name": "exchange-rates",
+  "version": "1.0.0",
+  "description": "Implementation of the exchangeratesapi.io api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hernan Peralta",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "currency-flags": "^2.1.1",
+    "jquery": "^3.4.1"
+  }
+}
