@@ -3,5 +3,5 @@
 Implementation of the https://exchangeratesapi.io/ API
 
 - HTML
-- CSS (Bootstap)
+- CSS (Bootstrap)
 - JavaScript
