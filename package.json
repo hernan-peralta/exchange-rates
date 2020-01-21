@@ -2,15 +2,20 @@
   "name": "exchange-rates",
   "version": "1.0.0",
   "description": "Implementation of the exchangeratesapi.io api",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hernan-peralta/exchange-rates.git"
   },
   "author": "Hernan Peralta",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.4.1",
     "currency-flags": "^2.1.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
   }
 }
