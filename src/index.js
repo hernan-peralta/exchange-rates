@@ -1,7 +1,8 @@
 const $dropdownMenu = document.querySelector(".dropdown-menu");
+const $dateInput = document.querySelector("input");
+const $form = document.querySelector("form");
 
-
-function getData(url) { 
+function getData(url) {
     fetch(url)
         .then(res => res.json())
 
@@ -67,7 +68,7 @@ function renderTable(object) {
 
 $dropdownMenu.onclick = function (e) {
     if (e.target.classList.contains('dropdown-item')) {
-        let currency = e.target.innerText;        
+        let currency = e.target.innerText;
         document.querySelector("#currency").innerText = e.target.innerText;
         let flag = document.createElement('div')
         flag.classList.add("currency-flag", `currency-flag-${e.target.innerText.toLowerCase()}`);
@@ -76,5 +77,19 @@ $dropdownMenu.onclick = function (e) {
         getData(`https://api.exchangeratesapi.io/latest?base=${currency}`);
     }
 }
+
+
+$form.onsubmit = function(){
+    let currency;
+    if (document.querySelector("#currency").innerText != "EUR (default)"){
+        currency = document.querySelector("#currency").innerText;
+        getData(`https://api.exchangeratesapi.io/${$dateInput.value}?base=${currency}`);
+    }
+    else{
+        getData(`https://api.exchangeratesapi.io/${$dateInput.value}`);
+    }
+    event.preventDefault();
+}
+
 
 populateDropdownMenu();
