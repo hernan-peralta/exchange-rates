@@ -24,6 +24,7 @@ function populateDropdownMenu() {
             for (key in responseJSON.rates) {
                 $dropdownMenu.appendChild(dropdownOptionCreator(key));
             }
+            document.querySelector("#date").innerText = responseJSON.date;
             renderTable(responseJSON.rates);
         })
 }
@@ -90,6 +91,5 @@ $form.onsubmit = function(){
     }
     event.preventDefault();
 }
-
 
 populateDropdownMenu();
