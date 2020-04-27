@@ -1,8 +1,8 @@
 import { getData } from './api.js'
 import renderUI, { eventHandlers } from './ui.js'
 
-function exchangeRates(url){
-  getData(url)
+async function exchangeRates(url){
+  await getData(url)
     .then(res => renderUI(res))
 }
 

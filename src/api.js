@@ -8,10 +8,14 @@ class Rates {
   }
 }
 
-export function getData(url = `${BASE_URL}/latest`) {
-  return fetch(url)
-    .then(res => res.json())
-    .then(resJSON => new Rates(resJSON))
-    .catch(error => console.error("Failed", error));
+export async function getData(url = `${BASE_URL}/latest`){
+  try {
+    const response = await fetch(url)
+    const responseJSON = await response.json()
+    return new Rates(await responseJSON)
+  }
+  catch (err) {
+    err =>  console.error("Pssst, hey, there was an error: ", err)
+  }
 }
 
